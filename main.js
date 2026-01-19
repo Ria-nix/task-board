@@ -1,4 +1,4 @@
-const url = "https://dummyjson.com/users";
+const url = "https://dummyjson.com/users?limit=10";
 
 fetch(url)
     .then(response => response.json())
@@ -10,7 +10,7 @@ fetch(url)
 
         users.forEach(user => {
             const el = document.createElement('p');
-            el.textContent = `${user.firstName} ${user.lastName} - ${user.email}`;
+            el.textContent = `${user.id}: ${user.firstName} ${user.lastName} - ${user.email}`;
             list.append(el);
             console.log(user.firstName);
         });
