@@ -8,7 +8,12 @@
 </head>
 <body>
     <div id="app">
-        <table class="app-list" border="1" width="100%">
+        <header>
+            <h1>TABLE BOARD</h1>
+            <button class="sort" data-order="asc">Sort: desc</button>
+            <hr>            
+        </header>
+        <table border="1" width="100%">
             <tr>
                 <th>ID</th>
                 <th>Name</th>
@@ -19,7 +24,13 @@
                 <th>Email</th>
                 <th>Phone</th>
             </tr>
+            <tbody class="app-list"></tbody>
         </table>
+        <hr>
+        <div class="table-arrows">
+            <button class="arrow btn-left"></button>
+            <button class="arrow btn-right"></button>
+        </div>
     </div>
 
     <script src="./main.js"></script>
