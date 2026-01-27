@@ -1,21 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let orderValue = "asc";
-  let paginationCount = 0;
+  let userOrder = "asc";
+  let userSkipCount = 0;
 
-  function fetchFunc() {
-    const url = getUsersList(orderValue, paginationCount);
+  let userTable = document.querySelector(".app-list");
+  if (!userTable) return;
+
+  function showUserTable() {
+    const url = getUsersListUrl(userOrder, userSkipCount);
     // console.log(url);
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
         let users = data.users;
-        let table = document.querySelector(".app-list");
-        if (!table) return;
-        table.innerHTML = "";
+        userTable.innerHTML = "";
 
         users.forEach((user) => {
-          table.appendChild(getUsersTable(user));
+          userTable.appendChild(createUserRow(user));
         });
       })
       .catch((error) => {
@@ -23,15 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("app").textContent = "Ошибка загрузки!";
       });
   }
-  fetchFunc();
+  showUserTable();
 
-  function getUsersList(orderValue, paginationCount) {
+  function getUsersListUrl(userOrder, userSkipCount) {
     let objUrl = {
       base: "https://dummyjson.com/users",
       limit: "limit=10",
-      skip: `skip=${paginationCount}`,
+      skip: `skip=${userSkipCount}`,
       sort: "sortBy=firstName",
-      order: `order=${orderValue}`,
+      order: `order=${userOrder}`,
     };
 
     let baseUrl = objUrl.base;
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return baseUrl + "?" + params.join("&");
   }
 
-  function getUsersTable(user) {
+  function createUserRow(user) {
     let row = document.createElement("tr");
     row.innerHTML = `<td>${user.id}</td>
                   <td>${user.firstName}</td>
@@ -59,32 +60,31 @@ document.addEventListener("DOMContentLoaded", () => {
     return row;
   }
 
-  
-  const orderBtn = document.querySelector(".sort");
-  orderBtn.textContent = `Sort: ${orderValue.toLocaleLowerCase()}`;
+  const userOrderBtn = document.querySelector(".sort");
+  userOrderBtn.textContent = `Sort: ${userOrder.toLocaleLowerCase()}`;
 
-  orderBtn.addEventListener("click", () => {
-    orderValue = orderBtn.dataset.order === "asc" ? "desc" : "asc";
-    orderBtn.dataset.order = orderValue;
-    orderBtn.textContent = `Sort: ${orderValue.toLocaleLowerCase()}`;
+  userOrderBtn.addEventListener("click", () => {
+    userOrder = orderBtn.dataset.order === "asc" ? "desc" : "asc";
+    userOrderBtn.dataset.order = userOrder;
+    userOrderBtn.textContent = `Sort: ${userOrder.toLocaleLowerCase()}`;
 
-    fetchFunc();
+    showUserTable();
   });
 
 
-  const btnLeft = document.querySelector(".btn-left");
-  const btnRight = document.querySelector(".btn-right");
+  const userPageBtnPrev = document.querySelector(".btn-left");
+  const userPageBtnNext = document.querySelector(".btn-right");
 
-  btnLeft.addEventListener("click", () => {
-    paginationCount = paginationCount - 10;
-    if (paginationCount < 0) {
-      paginationCount = 0;
+  userPageBtnPrev.addEventListener("click", () => {
+    userSkipCount = userSkipCount - 10;
+    if (userSkipCount < 0) {
+      userSkipCount = 0;
     }
-    fetchFunc();
+    showUserTable();
   });
-  btnRight.addEventListener("click", () => {
-    paginationCount = paginationCount + 10;
-    fetchFunc();
+  userPageBtnNext.addEventListener("click", () => {
+    userSkipCount = userSkipCount + 10;
+    showUserTable();
   });
 
   // FORM
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //   e.preventDefault();
   //   console.log(e.target.name.value);
   //   if (!filter) {
-  //     // getUsersList(orderValue, paginationCount, filter);
+  //     // getUsersListUrl(userOrder, userSkipCount, filter);
   //   }
   // });
 });
