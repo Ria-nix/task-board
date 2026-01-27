@@ -8,9 +8,13 @@
 </head>
 <body>
     <div id="app">
+        <h1>TABLE BOARD</h1>
         <header>
-            <h1>TABLE BOARD</h1>
-            <button class="sort" data-order="asc">Sort: desc</button>
+            <button class="sort" type="button" data-order="asc">Sort: desc</button>
+            <form class="form_search" action="" method="get">
+                <input type="search" name="name" id="" placeholder="Find name ...">
+                <button type="search">Search</button>
+            </form> 
             <hr>            
         </header>
         <table border="1" width="100%">
@@ -28,8 +32,8 @@
         </table>
         <hr>
         <div class="table-arrows">
-            <button class="arrow btn-left"></button>
-            <button class="arrow btn-right"></button>
+            <button type="button" class="arrow btn-left"></button>
+            <button type="button" class="arrow btn-right"></button>
         </div>
     </div>
 
