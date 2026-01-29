@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
   userOrderBtn.textContent = `Sort: ${userOrder.toLocaleLowerCase()}`;
 
   userOrderBtn.addEventListener("click", () => {
-    userOrder = orderBtn.dataset.order === "asc" ? "desc" : "asc";
+    userOrder = userOrderBtn.dataset.order === "asc" ? "desc" : "asc";
     userOrderBtn.dataset.order = userOrder;
     userOrderBtn.textContent = `Sort: ${userOrder.toLocaleLowerCase()}`;
 
