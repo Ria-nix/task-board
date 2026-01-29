@@ -49,14 +49,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function createUserRow(user) {
     let row = document.createElement("tr");
-    row.innerHTML = `<td>${user.id}</td>
+    row.innerHTML = `<td>${user.lastName}</td>
                   <td>${user.firstName}</td>
-                  <td>${user.lastName}</td>
                   <td>${user.maidenName || "-"}</td>
-                  <td>${user.gender}</td>
                   <td>${user.age}</td>
+                  <td>${user.gender}</td>
+                  <td>${user.phone}</td>
                   <td>${user.email}</td>
-                  <td>${user.phone}</td>`;
+                  <td>${user.address.country}</td>
+                  <td>${user.address.city}</td>`;
     return row;
   }
 

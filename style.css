@@ -46,3 +46,8 @@ header{
 .arrow.btn-right::after{
     transform: rotate(180deg) translateY(5%);
 }
+table td{
+    min-width: 50px;
+    max-width: calc(max-content + 50px);
+    text-align: center;
+}
