@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   let userOrder = "asc";
+  let userSort = "lastName";
   let userSkipCount = 0;
-
-  let userTable = document.querySelector(".app-list");
-  if (!userTable) return;
+  let userPageCounterView = 1;
 
   function showUserTable() {
     const url = getUsersListUrl(userOrder, userSkipCount);
@@ -31,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       base: "https://dummyjson.com/users",
       limit: "limit=10",
       skip: `skip=${userSkipCount}`,
-      sort: "sortBy=firstName",
+      sort: `sortBy=${userSort}`,
       order: `order=${userOrder}`,
     };
 
@@ -58,44 +57,86 @@ document.addEventListener("DOMContentLoaded", () => {
                   <td>${user.email}</td>
                   <td>${user.address.country}</td>
                   <td>${user.address.city}</td>`;
+    showModalInfoRow(row, user);
     return row;
   }
 
-  const userOrderBtn = document.querySelector(".sort");
-  userOrderBtn.textContent = `Sort: ${userOrder.toLocaleLowerCase()}`;
+  function showModalInfoRow(row, user) {
+    row.addEventListener("click", () => {
+      body.classList.add("_no-overflow");
+      userModal.classList.remove("_none");
 
-  userOrderBtn.addEventListener("click", () => {
-    userOrder = userOrderBtn.dataset.order === "asc" ? "desc" : "asc";
-    userOrderBtn.dataset.order = userOrder;
-    userOrderBtn.textContent = `Sort: ${userOrder.toLocaleLowerCase()}`;
+      createUserModalInfo(user);
+    });
+  }
 
+  function createUserModalInfo(user) {
+    let fullName = user.firstName + " " + user.maidenName + " " + user.lastName;
+    userModalNameElem.textContent = fullName;
+    userModalImage.src = user.image || alert("нет фото");
+
+    let dataModal = [
+      user.age,
+      user.address.address,
+      user.height,
+      user.weight,
+      user.phone,
+      user.email,
+    ];
+
+    userModalDataItem.forEach((item, index) => {
+      item.textContent = dataModal[index];
+    });
+  }
+
+  userModalCloseBtn.addEventListener("click", () => {
+    body.classList.remove("_no-overflow");
+    userModal.classList.add("_none");
+  });
+
+  userOrderSelect.addEventListener("change", (event) => {
+    userOrder = event.target.value;
+  });
+
+  userOrderSelectByName.addEventListener("change", (event) => {
+    userSort = event.target.value;
+  });
+
+  userOrderBtnTable.addEventListener("click", () => {
     showUserTable();
   });
 
-
-  const userPageBtnPrev = document.querySelector(".btn-left");
-  const userPageBtnNext = document.querySelector(".btn-right");
+  userUnorderBtnTable.addEventListener("click", () => {
+    userSort = "";
+    showUserTable();
+  });
 
   userPageBtnPrev.addEventListener("click", () => {
     userSkipCount = userSkipCount - 10;
+    userPageCounterElement.textContent = userPageCounterView - 1;
+
     if (userSkipCount < 0) {
       userSkipCount = 0;
+      userPageCounterElement.textContent = userPageCounterView = 1;
     }
+
     showUserTable();
+
+    userPageCounterView--;
+    userPageCounterElement.textContent = userPageCounterView;
+
+    if (userSkipCount <= 0) {
+      userPageCounterView = 1;
+      userPageCounterElement.textContent = userPageCounterView;
+    }
   });
+
   userPageBtnNext.addEventListener("click", () => {
     userSkipCount = userSkipCount + 10;
+
     showUserTable();
+
+    userPageCounterView++;
+    userPageCounterElement.textContent = userPageCounterView;
   });
-
-  // FORM
-  // const form = document.querySelector(".form_search");
-
-  // form.addEventListener("submit", (e) => {
-  //   e.preventDefault();
-  //   console.log(e.target.name.value);
-  //   if (!filter) {
-  //     // getUsersListUrl(userOrder, userSkipCount, filter);
-  //   }
-  // });
 });

@@ -10,11 +10,25 @@
     <div id="app">
         <h1>TABLE BOARD</h1>
         <header>
-            <button class="sort" type="button" data-order="asc">Sort: desc</button>
-            <form class="form_search" action="" method="get">
-                <input type="search" name="name" id="" placeholder="Find name ...">
-                <button type="search">Search</button>
-            </form> 
+            <div class="header_sort">
+                <p>Сортировка по:</p>
+                <select class="sort_order">
+                    <option value="asc" selected>возрастанию</option>
+                    <option value="desc">убыванию</option>
+                </select>
+                <p>По столбцу:</p>
+                <select class="sort_name">
+                    <option value="lastName" selected>LastName</option>
+                    <option value="name">Name</option>
+                    <option value="maidenName">MaidenName</option>
+                    <option value="age">Age</option>
+                    <option value="gender">Gender</option>
+                    <option value="phone">Phone</option>
+                    <option value="email">Email</option>
+                </select>
+                <button type="button" class="sort-table">Применить</button>
+                <button type="button" class="unsort-table">Без сортировки</button>
+            </div>
             <hr>            
         </header>
         <table border="1" width="100%">
@@ -34,10 +48,48 @@
         <hr>
         <div class="table-arrows">
             <button type="button" class="arrow btn-left"></button>
+            <span class="table_counter">1</span>
             <button type="button" class="arrow btn-right"></button>
         </div>
     </div>
 
+
+    <div class="popup-user__info _none">
+        <span class="popup-user__close-btn">X</span>
+        <h3>Information about <span></span></h3>
+        <div class="popup-user__info-wrap">
+            <div class="popup-user__info-item">
+                <p>Фото</p>
+                <img src="" class="popup-user__item-img"/>
+            </div>
+            <div class="popup-user__info-item">
+                <p>Возраст: </p>
+                <p class="popup-user__item-data"></p>
+            </div>
+            <div class="popup-user__info-item">
+                <p>Поля адреса: </p>
+                <p class="popup-user__item-data"></p>
+            </div>
+            <div class="popup-user__info-item">
+                <p>Рост: </p>
+                <p class="popup-user__item-data"></p>
+            </div>
+            <div class="popup-user__info-item">
+                <p>Вес: </p>
+                <p class="popup-user__item-data"></p>
+            </div>
+            <div class="popup-user__info-item">
+                <p>Номер телефона: </p>
+                <p class="popup-user__item-data"></p>
+            </div>
+            <div class="popup-user__info-item">
+                <p>Email: </p>
+                <p class="popup-user__item-data"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="./varList.js"></script>
     <script src="./main.js"></script>
 </body>
 </html>
