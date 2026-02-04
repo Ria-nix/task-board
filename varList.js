@@ -13,3 +13,4 @@
   const userModalCloseBtn = userModal.querySelector(".popup-user__close-btn");
   const userModalImage = userModal.querySelector('.popup-user__item-img');
   const userModalDataItem = userModal.querySelectorAll('.popup-user__item-data');
+  const userModalNoPhotoElem = userModal.querySelector('.popup-user__no-photo');

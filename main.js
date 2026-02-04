@@ -73,25 +73,35 @@ document.addEventListener("DOMContentLoaded", () => {
   function createUserModalInfo(user) {
     let fullName = user.firstName + " " + user.maidenName + " " + user.lastName;
     userModalNameElem.textContent = fullName;
-    userModalImage.src = user.image || alert("нет фото");
+    userModalImage.src =
+      user.image || userModalNoPhotoElem.classList.remove("_none");
 
     let dataModal = [
+      `${user.address.country}, ${user.address.city}, ${user.address.address}`,
       user.age,
-      user.address.address,
-      user.height,
-      user.weight,
+      `${user.height} cм`,
+      `${user.weight} кг`,
       user.phone,
       user.email,
     ];
 
     userModalDataItem.forEach((item, index) => {
       item.textContent = dataModal[index];
+      if (item.tagName === "A") {
+        item.href = "mailto:" + dataModal[index];
+      }
     });
   }
 
   userModalCloseBtn.addEventListener("click", () => {
     body.classList.remove("_no-overflow");
     userModal.classList.add("_none");
+    userModalImage.src = "";
+    userModalNoPhotoElem.classList.add("_none");
+
+    userModalDataItem.forEach((item) => {
+      item.textContent = "";
+    });
   });
 
   userOrderSelect.addEventListener("change", (event) => {

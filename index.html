@@ -1,95 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TaskBoard</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div id="app">
-        <h1>TABLE BOARD</h1>
-        <header>
-            <div class="header_sort">
-                <p>Сортировка по:</p>
-                <select class="sort_order">
-                    <option value="asc" selected>возрастанию</option>
-                    <option value="desc">убыванию</option>
-                </select>
-                <p>По столбцу:</p>
-                <select class="sort_name">
-                    <option value="lastName" selected>LastName</option>
-                    <option value="name">Name</option>
-                    <option value="maidenName">MaidenName</option>
-                    <option value="age">Age</option>
-                    <option value="gender">Gender</option>
-                    <option value="phone">Phone</option>
-                    <option value="email">Email</option>
-                </select>
-                <button type="button" class="sort-table">Применить</button>
-                <button type="button" class="unsort-table">Без сортировки</button>
-            </div>
-            <hr>            
-        </header>
-        <table border="1" width="100%">
-            <tr>
-                <th>LastName</th>
-                <th>Name</th>
-                <th>MaidenName</th>
-                <th>Age</th>
-                <th>Gender</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>Country</th>
-                <th>City</th>
-            </tr>
-            <tbody class="app-list"></tbody>
-        </table>
-        <hr>
-        <div class="table-arrows">
-            <button type="button" class="arrow btn-left"></button>
-            <span class="table_counter">1</span>
-            <button type="button" class="arrow btn-right"></button>
+      <header>
+        <h1>Таблица пользователей</h1>
+        <div class="header_sort">
+          <p>Сортировка по:</p>
+          <select class="sort_order">
+            <option value="asc" selected>возрастанию</option>
+            <option value="desc">убыванию</option>
+          </select>
+          <p>По столбцу:</p>
+          <select class="sort_name">
+            <option value="lastName" selected>Фамилия</option>
+            <option value="name">Имя</option>
+            <option value="maidenName">Отчество</option>
+            <option value="age">Возраст</option>
+            <option value="gender">Пол</option>
+            <option value="phone">Номер телефона</option>
+            <option value="email">Почта</option>
+          </select>
+          <button type="button" class="sort-table">Применить</button>
+          <button type="button" class="unsort-table">Без сортировки</button>
         </div>
+        <hr />
+      </header>
+      <table border="1" width="100%">
+        <thead>
+          <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Возраст</th>
+            <th>Пол</th>
+            <th>Номер телефона</th>
+            <th>Почта</th>
+            <th>Страна</th>
+            <th>Город</th>
+          </tr>
+        </thead>
+        <tbody class="app-list"></tbody>
+      </table>
+      <hr />
+      <div class="table-arrows">
+        <button type="button" class="arrow btn-left"></button>
+        <span class="table_counter">1</span>
+        <button type="button" class="arrow btn-right"></button>
+      </div>
     </div>
 
-
     <div class="popup-user__info _none">
-        <span class="popup-user__close-btn">X</span>
-        <h3>Information about <span></span></h3>
-        <div class="popup-user__info-wrap">
-            <div class="popup-user__info-item">
-                <p>Фото</p>
-                <img src="" class="popup-user__item-img"/>
-            </div>
-            <div class="popup-user__info-item">
-                <p>Возраст: </p>
-                <p class="popup-user__item-data"></p>
-            </div>
-            <div class="popup-user__info-item">
-                <p>Поля адреса: </p>
-                <p class="popup-user__item-data"></p>
-            </div>
-            <div class="popup-user__info-item">
-                <p>Рост: </p>
-                <p class="popup-user__item-data"></p>
-            </div>
-            <div class="popup-user__info-item">
-                <p>Вес: </p>
-                <p class="popup-user__item-data"></p>
-            </div>
-            <div class="popup-user__info-item">
-                <p>Номер телефона: </p>
-                <p class="popup-user__item-data"></p>
-            </div>
-            <div class="popup-user__info-item">
-                <p>Email: </p>
-                <p class="popup-user__item-data"></p>
-            </div>
+      <span class="popup-user__close-btn">X</span>
+      <h3>Information about <span></span></h3>
+      <div class="popup-user__info-wrap">
+        <div class="popup-user__info-item">
+          <p class="popup-user__no-photo _none">Нет фото</p>
+          <img src="/" class="popup-user__item-img" />
         </div>
+        <div class="popup-user__info-item">
+          <p>Адрес:</p>
+          <p class="popup-user__item-data"></p>
+        </div>
+        <div class="popup-user__info-item">
+          <p>Возраст:</p>
+          <p class="popup-user__item-data"></p>
+        </div>
+        <div class="popup-user__info-item">
+          <p>Рост:</p>
+          <p class="popup-user__item-data"></p>
+        </div>
+        <div class="popup-user__info-item">
+          <p>Вес:</p>
+          <p class="popup-user__item-data _weight"></p>
+        </div>
+        <div class="popup-user__info-item">
+          <p>Номер телефона:</p>
+          <p class="popup-user__item-data"></p>
+        </div>
+        <div class="popup-user__info-item">
+          <p>Email:</p>
+          <a href="" class="popup-user__item-data"></a>
+        </div>
+      </div>
     </div>
 
     <script src="./varList.js"></script>
     <script src="./main.js"></script>
-</body>
+  </body>
 </html>
