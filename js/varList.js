@@ -1,0 +1,16 @@
+  const body = document.querySelector('body');
+  const userTable = document.querySelector(".app-list");
+  const userOrderSelect = document.querySelector(".sort_order");
+  const userOrderSelectByName = document.querySelector(".sort_name");
+  const userOrderBtnTable = document.querySelector(".sort-table");
+  const userUnorderBtnTable = document.querySelector(".unsort-table");
+  const userPageBtnPrev = document.querySelector(".btn-left");
+  const userPageBtnNext = document.querySelector(".btn-right");
+  const userPageCounterElement = document.querySelector(".table_counter");
+  const userModal = document.querySelector(".popup-user__info");
+  const userModalNameElem = userModal.querySelector("h3 span");
+  const userModalWrapInfo = userModal.querySelector(".popup-user__info-wrap");
+  const userModalCloseBtn = userModal.querySelector(".popup-user__close-btn");
+  const userModalImage = userModal.querySelector('.popup-user__item-img');
+  const userModalDataItem = userModal.querySelectorAll('.popup-user__item-data');
+  const userModalNoPhotoElem = userModal.querySelector('.popup-user__no-photo');
