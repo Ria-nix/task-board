@@ -1,4 +1,3 @@
-// controller.js
 export function createUserController(model, view) {
 
   function update() {

@@ -152,33 +152,3 @@
 //     userPageCounterElement.textContent = userPageCounterView;
 //   });
 // });
-
-
-// main.js
-import { createUserModel } from "./model.js";
-import { createUserView } from "./view.js";
-import { createUserController } from "./logic.js";
-
-const model = createUserModel();
-const view = createUserView();
-const controller = createUserController(model, view);
-
-document.addEventListener("DOMContentLoaded", controller.init);
-
-document.querySelector(".sort_order")
-  .addEventListener("change", e => controller.setOrder(e.target.value));
-
-document.querySelector(".sort_name")
-  .addEventListener("change", e => controller.setSort(e.target.value));
-
-document.querySelector(".btn-right")
-  .addEventListener("click", controller.nextPage);
-
-document.querySelector(".btn-left")
-  .addEventListener("click", controller.prevPage);
-
-document.querySelector(".sort-table")
-  .addEventListener("click", controller.update);
-
-document.querySelector(".unsort-table")
-  .addEventListener("click", () => controller.setSort(""));

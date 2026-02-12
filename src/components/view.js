@@ -1,4 +1,3 @@
-// view.js
 export function createUserView() {
   const body = document.body;
   const table = document.querySelector(".app-list");

@@ -1,4 +1,3 @@
-// model.js
 const API_URL = "https://dummyjson.com/users";
 const LIMIT = 10;
 
